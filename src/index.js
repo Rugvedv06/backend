@@ -6,7 +6,16 @@ import conectDB from "./db/index.js";
 
 dotenv.config({ path: "./.env" });
 
-conectDB();
+conectDB()
+.then(()=>{
+    app.listen(process.env.PORT||8000,()=>{
+        console.log(`Server is starting on port:${PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("Error :",err)
+
+})
 
 
 
